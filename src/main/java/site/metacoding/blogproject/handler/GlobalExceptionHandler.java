@@ -1,15 +1,18 @@
 package site.metacoding.blogproject.handler;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
+
+import site.metacoding.blogproject.Controller.dto.ResponseDto;
 
 @ControllerAdvice
 @RestController
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
-    public String handleArugumentException(IllegalArgumentException e) {
-        return "<h1>" + e.getMessage() + "</h1>";
+    public ResponseDto<String> handleArugumentException(Exception e) {
+        return new ResponseDto<String>(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage());
     }
 }
