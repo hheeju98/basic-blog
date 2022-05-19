@@ -47,6 +47,6 @@ public class User {
     @Enumerated(EnumType.STRING)
     private RoleType role; // Enum을 쓰는게 좋다. ADMIN,USER 타입 강제// admin, user, manager 등의 권한 관리
 
-    @CreationTimestamp // 시간이 자동으로 입력됨
+    @CreationTimestamp
     private Timestamp createDate;
 }
