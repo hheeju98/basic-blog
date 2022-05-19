@@ -1,29 +1,22 @@
 {{>layout/header}}
 <div class="container">
 
+    {{#boards}}
     <div class="card m-2">
 
         <div class="card-body">
-            <h4 class="card-title">제목 적는 부분</h4>
+
+            <h4 class="card-title">{{title}}</h4>
+
+            <!--board.getTitle이 호출된다.-->
             <a href="#" class="btn btn-primary">상세보기</a>
         </div>
     </div>
 
-    <div class="card m-2">
 
-        <div class="card-body">
-            <h4 class="card-title">제목 적는 부분</h4>
-            <a href="#" class="btn btn-primary">상세보기</a>
-        </div>
-    </div>
+    {{/boards}}
 
-    <div class="card m-2">
 
-        <div class="card-body">
-            <h4 class="card-title">제목 적는 부분</h4>
-            <a href="#" class="btn btn-primary">상세보기</a>
-        </div>
-    </div>
 
 </div>
 {{>layout/footer}}
