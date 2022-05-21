@@ -1,0 +1,26 @@
+{{>layout/header}}
+<div class="container">
+
+    <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
+    <button id="btn-update" class="btn btn-warning">수정</button>
+    <button id="btn-delete" class="btn btn-danger">삭제</button>
+    <br /><br />
+
+
+    <div>
+
+        <h3>{{boards.title}}</h3>
+    </div>
+
+    <div>
+        <hr />
+        <div>
+            {{{boards.content}}}
+            <hr />
+        </div>
+    </div>
+
+
+
+    <script src="/js/board.js"></script>
+    {{>layout/footer}}
