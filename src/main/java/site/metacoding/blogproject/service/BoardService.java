@@ -1,18 +1,15 @@
 package site.metacoding.blogproject.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.blogproject.domain.Board;
 import site.metacoding.blogproject.domain.BoardRepository;
-import site.metacoding.blogproject.domain.RoleType;
 import site.metacoding.blogproject.domain.User;
-import site.metacoding.blogproject.domain.UserRepository;
 
 // 스프링이 컴포넌트 스캔을 통해서 Bean에 등록을 해줌. IoC를 해준다.
 @Service
@@ -29,7 +26,9 @@ public class BoardService {
         boardRepository.save(board);
     }
 
-    public List<Board> 글목록() {
-        return boardRepository.findAll();
+    // 페이징을 하면 리턴값이 리스트가 아닌 페이지 타입이 된다.
+    @Transactional(readOnly = true)
+    public Page<Board> 글목록(Pageable pageable) {
+        return boardRepository.findAll(pageable);
     }
 }

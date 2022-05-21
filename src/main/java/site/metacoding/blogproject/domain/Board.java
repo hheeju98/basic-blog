@@ -41,7 +41,7 @@ public class Board {
 
     private int count; // 조회수
 
-    @ManyToOne(fetch = FetchType.EAGER) // user, userId의 연관관계 만들어줌 / Many = Board, User = One 한명의 유저가 여러개의 게시글
+    @ManyToOne(fetch = FetchType.LAZY) // user, userId의 연관관계 만들어줌 / Many = Board, User = One 한명의 유저가 여러개의 게시글
     @JoinColumn(name = "userId") // 디비에 만드렁질때 userId라는 이름으로 만들어줄것임
     private User user; // 디비는 오브젝트를 저장할 수 없다 그래서 fk 사용 / 자바는 오브젝트를 저장할 숭 있다.
 

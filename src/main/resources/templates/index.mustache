@@ -1,7 +1,11 @@
 {{>layout/header}}
 <div class="container">
 
-    {{#boards}}
+    <!-- 현재페이지 번호 : {{boards.number}} <br />
+    첫 페이지 : {{boards.first}} <br />
+    마지막 페이지 : {{boards.last}} <br />-->
+
+    {{#boards.content}}
     <div class="card m-2">
 
         <div class="card-body">
@@ -14,9 +18,26 @@
     </div>
 
 
-    {{/boards}}
+    {{/boards.content}}
+
+    <ul class="pagination justify-content-center">
+
+        {{#boards.first}}
+        <li class="page-item disabled"><a class="page-link" href="?page={{prevPage}}">이전</a></li>
+        {{/boards.first}}
+        {{^boards.first}}
+        <li class="page-item"><a class="page-link" href="?page={{prevPage}}">이전</a></li>
+        {{/boards.first}}
 
 
+        {{#boards.last}}
+        <li class="page-item disabled"><a class="page-link" href="?page={{nextPage}}">다음</a></li>
+        {{/boards.last}}
+        {{^boards.last}}
+        <li class="page-item"><a class="page-link" href="?page={{nextPage}}">다음</a></li>
+        {{/boards.last}}
+
+    </ul>
 
 </div>
 {{>layout/footer}}
