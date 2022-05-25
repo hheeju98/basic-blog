@@ -13,7 +13,6 @@ import site.metacoding.blogproject.domain.User;
 
 // 스프링이 컴포넌트 스캔을 통해서 Bean에 등록을 해줌. IoC를 해준다.
 @Service
-@RequiredArgsConstructor
 public class BoardService {
 
     @Autowired
@@ -32,10 +31,16 @@ public class BoardService {
         return boardRepository.findAll(pageable);
     }
 
+    @Transactional(readOnly = true)
     public Board 글상세보기(int id) {
         return boardRepository.findById(id)
                 .orElseThrow(() -> {
                     return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다.");
                 });
+    }
+
+    @Transactional
+    public void 글삭제하기(int id) {
+        boardRepository.deleteById(id);
     }
 }

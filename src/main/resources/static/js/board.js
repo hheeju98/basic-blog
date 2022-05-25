@@ -3,6 +3,9 @@ let index = {
         $("#btn-write").on("click", ()=>{ //function(){}, ()=> this를 바인딩하기 위해서!
             this.save();
         });
+        $("#btn-delete").on("click", ()=>{ //function(){}, ()=> this를 바인딩하기 위해서!
+            this.deleteById();
+        });
     },
 
  
@@ -22,6 +25,22 @@ let index = {
  }).done(function(resp){
   console.log(resp);
  alert("글쓰기가 완료되었습니다.");
+ location.href = "/";
+ }).fail(function(error){
+ alert(JSON.stringify(error));
+ }); 
+  },
+ 
+
+  deleteById: function(){
+var id = $("#id").text();
+ $.ajax({
+ type: "DELETE",
+ url: "/api/board/" + id,
+ dataType: "json" // 요청을 서버로 해서 응답이 왔을 때 기본적으로 모든 것이 String문자열 (생긴게 json이라면) => javascript 오브젝트로 변경
+ }).done(function(resp){
+  console.log(resp);
+ alert("삭제가 완료되었습니다.");
  location.href = "/";
  }).fail(function(error){
  alert(JSON.stringify(error));
