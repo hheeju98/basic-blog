@@ -1,4 +1,4 @@
-package site.metacoding.blogproject.domain;
+package site.metacoding.blogproject;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

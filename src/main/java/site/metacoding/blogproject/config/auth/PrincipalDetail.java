@@ -1,4 +1,4 @@
-package site.metacoding.blogproject.auth;
+package site.metacoding.blogproject.config.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;

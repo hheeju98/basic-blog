@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.blogproject.domain.RoleType;
 import site.metacoding.blogproject.domain.User;
-import site.metacoding.blogproject.domain.UserRepository;
+import site.metacoding.blogproject.repository.UserRepository;
 
 // 스프링이 컴포넌트 스캔을 통해서 Bean에 등록을 해줌. IoC를 해준다.
 @Service

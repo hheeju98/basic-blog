@@ -1,9 +1,11 @@
-package site.metacoding.blogproject.domain;
+package site.metacoding.blogproject.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import site.metacoding.blogproject.domain.User;
 
 // DAO
 // 자동으로 bean등록이 된다,

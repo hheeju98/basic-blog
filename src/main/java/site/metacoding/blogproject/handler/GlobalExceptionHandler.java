@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
-import site.metacoding.blogproject.Controller.dto.ResponseDto;
+import site.metacoding.blogproject.dto.ResponseDto;
 
 @ControllerAdvice
 @RestController

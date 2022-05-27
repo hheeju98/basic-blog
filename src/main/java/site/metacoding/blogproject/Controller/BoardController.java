@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import site.metacoding.blogproject.domain.BoardRepository;
+import site.metacoding.blogproject.repository.BoardRepository;
 import site.metacoding.blogproject.service.BoardService;
 
 @Controller

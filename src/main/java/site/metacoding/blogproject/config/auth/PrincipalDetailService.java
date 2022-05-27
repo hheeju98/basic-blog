@@ -1,4 +1,4 @@
-package site.metacoding.blogproject.auth;
+package site.metacoding.blogproject.config.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import site.metacoding.blogproject.domain.User;
-import site.metacoding.blogproject.domain.UserRepository;
+import site.metacoding.blogproject.repository.UserRepository;
 
 @Service // Bean 등록
 public class PrincipalDetailService implements UserDetailsService {

@@ -1,4 +1,4 @@
-package site.metacoding.blogproject.Controller.dto;
+package site.metacoding.blogproject.dto;
 
 import org.springframework.http.HttpStatus;
 

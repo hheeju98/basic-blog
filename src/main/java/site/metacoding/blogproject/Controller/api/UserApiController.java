@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import site.metacoding.blogproject.Controller.dto.ResponseDto;
-import site.metacoding.blogproject.auth.PrincipalDetail;
+import site.metacoding.blogproject.config.auth.PrincipalDetail;
 import site.metacoding.blogproject.domain.RoleType;
 import site.metacoding.blogproject.domain.User;
+import site.metacoding.blogproject.dto.ResponseDto;
 import site.metacoding.blogproject.service.UserService;
 
 @RestController

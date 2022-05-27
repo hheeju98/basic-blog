@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import site.metacoding.blogproject.auth.PrincipalDetail;
+import site.metacoding.blogproject.config.auth.PrincipalDetail;
 import site.metacoding.blogproject.domain.User;
 
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {

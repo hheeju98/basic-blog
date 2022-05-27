@@ -11,7 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import site.metacoding.blogproject.auth.PrincipalDetailService;
+import site.metacoding.blogproject.config.auth.PrincipalDetailService;
 import site.metacoding.blogproject.handler.LoginSuccessHandler;
 
 // Bean 등록 : 스프링 컨테이너에서 객체를 관리할 수 있게 하는 것 
