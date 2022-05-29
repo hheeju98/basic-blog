@@ -1,4 +1,4 @@
-package site.metacoding.blogproject.domain;
+package site.metacoding.blogproject.model;
 
 import java.sql.Timestamp;
 import java.util.List;

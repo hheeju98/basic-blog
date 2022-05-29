@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import site.metacoding.blogproject.domain.User;
+import site.metacoding.blogproject.model.User;
 
 // DAO
 // 자동으로 bean등록이 된다,

@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import site.metacoding.blogproject.domain.User;
+import site.metacoding.blogproject.model.User;
 import site.metacoding.blogproject.repository.UserRepository;
 
 @Service // Bean 등록

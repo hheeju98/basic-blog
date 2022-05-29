@@ -1,4 +1,4 @@
-package site.metacoding.blogproject.domain;
+package site.metacoding.blogproject.model;
 
 import java.sql.Timestamp;
 
@@ -32,7 +32,7 @@ public class User {
 
     private int id; // primary key시퀀스, auto_increment
 
-    @Column(nullable = false, length = 30, unique = true)
+    @Column(nullable = false, length = 100, unique = true)
     private String username; // 아이디
 
     @Column(nullable = false, length = 100) // 비밀번호 해쉬로 변경해서 암호화할 것이기 때문에 넉넉하게 100으로
@@ -46,6 +46,8 @@ public class User {
     // DB는 RoleType이라는게 없다.
     @Enumerated(EnumType.STRING)
     private RoleType role; // Enum을 쓰는게 좋다. ADMIN,USER 타입 강제// admin, user, manager 등의 권한 관리
+
+    private String oauth; // kakao, google로그인 판별
 
     @CreationTimestamp
     private Timestamp createDate;

@@ -10,13 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.blogproject.domain.RoleType;
-import site.metacoding.blogproject.domain.User;
+import site.metacoding.blogproject.model.RoleType;
+import site.metacoding.blogproject.model.User;
 import site.metacoding.blogproject.repository.UserRepository;
 
 // 스프링이 컴포넌트 스캔을 통해서 Bean에 등록을 해줌. IoC를 해준다.
 @Service
-@RequiredArgsConstructor
 public class UserService {
 
     @Autowired
@@ -24,6 +23,14 @@ public class UserService {
 
     @Autowired
     private BCryptPasswordEncoder encoder;
+
+    @Transactional(readOnly = true)
+    public User 회원찾기(String username) {
+        User user = userRepository.findByUsername(username).orElseGet(() -> {
+            return new User();
+        });
+        return user;
+    }
 
     @Transactional
     public void 회원가입(User user) {
@@ -42,10 +49,14 @@ public class UserService {
         User persistance = userRepository.findById(user.getId()).orElseThrow(() -> {
             return new IllegalArgumentException("회원 찾기 실패");
         });
-        String rawPassword = user.getPassword();
-        String encPassword = encoder.encode(rawPassword);
-        persistance.setPassword(encPassword);
-        persistance.setEmail(user.getEmail());
+        // Validate 체크 => oauth 필드에 값이 없으면 수정 가능
+        // 카카오로 로그인 한 사용자는 아이디 비밀번호가 cos, cos1234로 고정되어 변경할 수 없다.
+        if (persistance.getOauth() == null || persistance.getOauth().equals("")) {
+            String rawPassword = user.getPassword();
+            String encPassword = encoder.encode(rawPassword);
+            persistance.setPassword(encPassword);
+            persistance.setEmail(user.getEmail());
+        }
 
         // 회원 수정 함수 종료시 = 서비스 종료 = 트랜잭션 종료 = commit이 자동으로 된다.
         // 영속화된 persistance 객체의 변화가 감지되면 더티체킹이 되어 update문을 날려줌.

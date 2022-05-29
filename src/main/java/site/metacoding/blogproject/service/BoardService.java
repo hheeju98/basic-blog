@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.blogproject.domain.Board;
-import site.metacoding.blogproject.domain.User;
+import site.metacoding.blogproject.model.Board;
+import site.metacoding.blogproject.model.User;
 import site.metacoding.blogproject.repository.BoardRepository;
 
 // 스프링이 컴포넌트 스캔을 통해서 Bean에 등록을 해줌. IoC를 해준다.

@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import site.metacoding.blogproject.domain.RoleType;
-import site.metacoding.blogproject.domain.User;
+import site.metacoding.blogproject.model.RoleType;
+import site.metacoding.blogproject.model.User;
 import site.metacoding.blogproject.repository.UserRepository;
 
 // html 파일이 아니라 data리턴해주는 controller = RestController

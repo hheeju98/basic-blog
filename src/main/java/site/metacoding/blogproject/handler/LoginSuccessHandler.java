@@ -11,7 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import site.metacoding.blogproject.config.auth.PrincipalDetail;
-import site.metacoding.blogproject.domain.User;
+import site.metacoding.blogproject.model.User;
 
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
