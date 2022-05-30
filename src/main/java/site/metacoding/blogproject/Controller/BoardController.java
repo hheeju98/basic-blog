@@ -24,17 +24,14 @@ public class BoardController {
     private BoardRepository boardRepository;
 
     @GetMapping({ "", "/" })
-    public String index(@RequestParam(defaultValue = "0") Integer page, Model model) {
+    public String index(Model model,
+            @PageableDefault(size = 3, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         // 1. postRepository의 findAll() 호출
         // 2. model에 담기
         // model.addAttribute("posts",
         // postRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
-        PageRequest pq = PageRequest.of(page, 3);
-        model.addAttribute("boards", boardRepository.findAll(pq));
-        model.addAttribute("prevPage", page - 1);
-        model.addAttribute("nextPage", page + 1);
 
-        return "index";
+        return "index"; // viewResolver 작동!!
     }
 
     @GetMapping("/board/{id}")

@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import site.metacoding.blogproject.config.auth.PrincipalDetailService;
-import site.metacoding.blogproject.handler.LoginSuccessHandler;
 
 // Bean 등록 : 스프링 컨테이너에서 객체를 관리할 수 있게 하는 것 
 
@@ -56,8 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/s/loginForm")
                 .loginProcessingUrl("/s/loginProc") // 스프링 시큐리티가 해당주소로 요청오는 로그인을 가로채서 대신 로그인 해준다.
-                // .defaultSuccessUrl("/") // 요청이 정상적으로 완료되었을 때 "/"로 이동
-                .successHandler(new LoginSuccessHandler());
+                .defaultSuccessUrl("/"); // 요청이 정상적으로 완료되었을 때 "/"로 이동
 
         // .failureUrl("/fail") 실패했을 때
     }
