@@ -30,7 +30,7 @@ spring:
     serialization:
       fail-on-empty-beans: false
       
-http:
+  http:
     encoding:
       charset: UTF-8
       enabled: true

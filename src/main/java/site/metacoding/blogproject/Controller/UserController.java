@@ -1,4 +1,4 @@
-package site.metacoding.blogproject.Controller;
+package site.metacoding.blogproject.controller;
 
 import java.util.UUID;
 
