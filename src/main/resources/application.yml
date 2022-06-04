@@ -18,7 +18,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false
@@ -30,7 +30,7 @@ spring:
     serialization:
       fail-on-empty-beans: false
       
-http:
+  http:
     encoding:
       charset: UTF-8
       enabled: true

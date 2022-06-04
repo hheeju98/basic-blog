@@ -1,4 +1,4 @@
-package site.metacoding.blogproject.Controller.api;
+package site.metacoding.blogproject.controller.api;
 
 import javax.servlet.http.HttpSession;
 
