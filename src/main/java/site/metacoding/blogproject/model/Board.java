@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -50,7 +52,8 @@ public class Board {
     // FK가 reply테이블의 board가 주인이라는 뜻. 디비에 들어가 있는 값이 아니다.
 
     // @JoinColumn(name = "replyId" ) // 필요없음 보드 테이블에 replyId라는 외래키가 필요 없다
-    private List<Reply> reply; // 한건이 아니므로
+    @JsonIgnoreProperties({ "boards" })
+    private List<Reply> replys; // 한건이 아니므로
 
     @CreationTimestamp // 데이터가 인서트나 업데이트될때 자동으로 값이 들어감
     private Timestamp createDate;

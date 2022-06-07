@@ -30,14 +30,13 @@ public class BoardController {
         // 2. model에 담기
         // model.addAttribute("posts",
         // postRepository.findAll(Sort.by(Sort.Direction.DESC, "id")));
-
+        model.addAttribute("boards", boardService.글목록(pageable));
         return "index"; // viewResolver 작동!!
     }
 
     @GetMapping("/board/{id}")
     public String findById(@PathVariable int id, Model model) {
         model.addAttribute("boards", boardService.글상세보기(id));
-        boardService.글상세보기(id);
         return "board/detail";
     }
 
