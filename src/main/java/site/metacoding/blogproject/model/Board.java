@@ -3,6 +3,7 @@ package site.metacoding.blogproject.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,10 +49,11 @@ public class Board {
     @JoinColumn(name = "userId") // 디비에 만드렁질때 userId라는 이름으로 만들어줄것임
     private User user; // 디비는 오브젝트를 저장할 수 없다 그래서 fk 사용 / 자바는 오브젝트를 저장할 숭 있다.
 
-    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // 필요하면 들고오고 필요없으면 안들고 디폴트는 eager // 하나의 게시글은 여러개의 답변을 가질
-                                                            // 수있다. // mappedBy 연관관계의 주인이 아니다 (FK가 아니다) DB에 칼럼 만들지마. 주인이
+    @OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE) // 필요하면 들고오고 필요없으면 안들고 디폴트는
+                                                                                          // eager // 하나의 게시글은 여러개의 답변을
+                                                                                          // 가질
+    // 수있다. // mappedBy 연관관계의 주인이 아니다 (FK가 아니다) DB에 칼럼 만들지마. 주인이
     // FK가 reply테이블의 board가 주인이라는 뜻. 디비에 들어가 있는 값이 아니다.
-
     // @JoinColumn(name = "replyId" ) // 필요없음 보드 테이블에 replyId라는 외래키가 필요 없다
     @JsonIgnoreProperties({ "boards" })
     @OrderBy("id desc") // 댓글 내림차순 정렬
