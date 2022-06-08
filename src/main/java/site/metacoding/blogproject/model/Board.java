@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
@@ -53,6 +54,7 @@ public class Board {
 
     // @JoinColumn(name = "replyId" ) // 필요없음 보드 테이블에 replyId라는 외래키가 필요 없다
     @JsonIgnoreProperties({ "boards" })
+    @OrderBy("id desc") // 댓글 내림차순 정렬
     private List<Reply> replys; // 한건이 아니므로
 
     @CreationTimestamp // 데이터가 인서트나 업데이트될때 자동으로 값이 들어감

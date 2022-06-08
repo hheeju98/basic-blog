@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import site.metacoding.blogproject.config.auth.PrincipalDetail;
 import site.metacoding.blogproject.dto.ResponseDto;
 import site.metacoding.blogproject.model.Board;
+import site.metacoding.blogproject.model.Reply;
 import site.metacoding.blogproject.model.RoleType;
 import site.metacoding.blogproject.model.User;
 import site.metacoding.blogproject.service.BoardService;
@@ -45,6 +46,13 @@ public class BoardApiController {
         System.out.println("BoardApiController : update : board : " + board.getTitle());
         System.out.println("BoardApiController : update : board : " + board.getContent());
         boardService.글수정하기(id, board);
+        return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+    }
+
+    @PostMapping("/api/board/{boardId}/reply")
+    public ResponseDto<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reply,
+            @AuthenticationPrincipal PrincipalDetail principal) {
+        boardService.댓글쓰기(principal.getUser(), boardId, reply);
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
     }
     // 스프링 시큐리티 이용해서 로그인!

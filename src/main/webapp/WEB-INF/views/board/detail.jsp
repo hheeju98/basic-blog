@@ -6,7 +6,7 @@
 
             <button class="btn btn-secondary" onclick="history.back()">돌아가기</button>
 
-            <c:if test="${board.user.id == principal.user.id}">
+            <c:if test="${board.id == principal.user.id}">
                 <a href="/board/${board.id}/updateForm" class="btn btn-warning">수정</a>
                 <button id="btn-delete" class="btn btn-danger">삭제</button>
             </c:if>
@@ -26,8 +26,15 @@
             <hr />
 
             <div class = "card">
-            <div class = "card-body"><textarea class = "form-control" rows = "1"></textarea></div>
-            <div class = "card-footer"><button class = "btn btn-primary">등록</button></div>
+             <form>
+		    <input type="hidden" id="boardId" value="${board.id}" />
+			<div class="card-body">
+				<textarea id="reply-content" class="form-control" rows="1"></textarea>
+			</div>
+			<div class="card-footer">
+				<button type="button" id="btn-reply-save" class="btn btn-primary">등록</button>
+			</div>
+		</form>
             </div>
 
             <br/>
