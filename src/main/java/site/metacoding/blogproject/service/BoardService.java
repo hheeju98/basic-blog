@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import site.metacoding.blogproject.dto.ReplySaveRequestDto;
 import site.metacoding.blogproject.model.Board;
 import site.metacoding.blogproject.model.Reply;
 import site.metacoding.blogproject.model.User;
@@ -20,6 +21,11 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
     private final ReplyRepository replyRepository;
+
+    // public BoardService(BoardRepository bRepo, ReplyRepository rRepo) {
+    // this.boardRepository = bRepo;
+    // this.replyRepository = rRepo;
+    // }
 
     @Transactional
     public void 글쓰기(Board board, User user) { // title, content
@@ -60,14 +66,14 @@ public class BoardService {
     }
 
     @Transactional
-    public void 댓글쓰기(User user, int boardId, Reply requestReply) {
-        Board board = boardRepository.findById(boardId).orElseThrow(() -> {
-            return new IllegalArgumentException("댓글 쓰기 실패 : 게시글 id를 찾을 수 없습니다.");
-        }); // 영속화 완료;
+    public void 댓글쓰기(ReplySaveRequestDto replySaveRequestDto) {
+        int result = replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(),
+                replySaveRequestDto.getContent());
+        System.out.println("BoardService : " + result);
+    }
 
-        requestReply.setUser(user);
-        requestReply.setBoard(board);
-
-        replyRepository.save(requestReply);
+    @Transactional
+    public void 댓글삭제(int replyId) {
+        replyRepository.deleteById(replyId);
     }
 }
