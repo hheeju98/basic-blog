@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import site.metacoding.blogproject.model.Board;
 import site.metacoding.blogproject.repository.BoardRepository;
 import site.metacoding.blogproject.service.BoardService;
 
@@ -36,7 +37,8 @@ public class BoardController {
 
     @GetMapping("/board/{id}")
     public String findById(@PathVariable int id, Model model) {
-        model.addAttribute("boards", boardService.글상세보기(id));
+        Board board = boardService.글상세보기(id);
+        model.addAttribute("board", board);
         return "board/detail";
     }
 

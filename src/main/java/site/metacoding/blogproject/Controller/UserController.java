@@ -61,34 +61,47 @@ public class UserController {
         // Retrofit2
         // OkHttp
         // RestTemplate
-
+        System.out.println(1);
         RestTemplate rt = new RestTemplate();
 
+        System.out.println(2);
         // HttpHeader 오브젝트 생성
         HttpHeaders headers = new HttpHeaders();
+        System.out.println(3);
         headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
         // ContentType을 담는 것은 지금 전송할 바디 데이터가 key&value형태임을 알려준다.
 
         // HttpBody 오브젝트 생성
+        System.out.println(4);
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        System.out.println(5);
         params.add("grant_type", "authorization_code");
-        params.add("client_id", "f472a309b4a99f56ce0886338e1f94fb");
+        System.out.println(6);
+        params.add("client_id", "0c05d5b30bd0ecc8e76491de0a3ce894");
+        System.out.println(7);
+
+        System.out.println(8);
         params.add("redirect_uri", "http://localhost:8080/auth/kakao/callback");
+        System.out.println(9);
         params.add("code", code); // 동적으로 받는다!
 
         // HttpHeader와 HttpBody를 하나의 오브젝트에 담기
+        System.out.println(10);
         HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
 
         // Http 요청하기 - Post방식으로 - 그리고 response 변수의 응답 받음.
+        System.out.println(11);
         ResponseEntity<String> response = rt.exchange(
                 "https://kauth.kakao.com/oauth/token",
                 HttpMethod.POST,
                 kakaoTokenRequest, // 바디에 들어갈 데이터와 헤더 값
                 String.class);
-
+        System.out.println(12);
         // Gson, Json Simple, ObjectMapper 등의 라이브러리가 있다.
         ObjectMapper objectMapper = new ObjectMapper();
+        System.out.println(13);
         OAuthToken oauthToken = null;
+        System.out.println(14);
         try {
             oauthToken = objectMapper.readValue(response.getBody(), OAuthToken.class);
         } catch (JsonMappingException e) {
@@ -96,20 +109,25 @@ public class UserController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
+        System.out.println(15);
         System.out.println("카카오 엑세스 토큰 : " + oauthToken.getAccess_token());
-
+        System.out.println(16);
         RestTemplate rt2 = new RestTemplate();
 
+        System.out.println(17);
         // HttpHeader 오브젝트 생성
         HttpHeaders headers2 = new HttpHeaders();
+        System.out.println(18);
         headers2.add("Authorization", "Bearer " + oauthToken.getAccess_token());
+        System.out.println(19);
         headers2.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
         // ContentType을 담는 것은 지금 전송할 바디 데이터가 key&value형태임을 알려준다.
 
+        System.out.println(20);
         // HttpHeader와 HttpBody를 하나의 오브젝트에 담기
         HttpEntity<MultiValueMap<String, String>> kakaoProfileRequest2 = new HttpEntity<>(headers2);
 
+        System.out.println(21);
         // Http 요청하기 - Post방식으로 - 그리고 response 변수의 응답 받음.
         ResponseEntity<String> response2 = rt2.exchange(
                 "https://kapi.kakao.com/v2/user/me",
@@ -117,8 +135,9 @@ public class UserController {
                 kakaoProfileRequest2, // 바디에 들어갈 데이터와 헤더 값
                 String.class);
         System.out.println(response2.getBody());
-
+        System.out.println(22);
         ObjectMapper objectMapper2 = new ObjectMapper();
+        System.out.println(23);
         KakaoProfile kakaoProfile = null;
         try {
             kakaoProfile = objectMapper2.readValue(response2.getBody(), KakaoProfile.class);
@@ -127,16 +146,20 @@ public class UserController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-
+        System.out.println(24);
         // User 오브젝트 : username, password, email
         System.out.println("카카오 아이디(번호) : " + kakaoProfile.getId());
+        System.out.println(25);
         System.out.println("카카오 이메일 : " + kakaoProfile.getKakao_account().getEmail());
 
+        System.out.println(26);
         System.out.println("블로그서버 유저네임 : " + kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId());
+        System.out.println(27);
         System.out.println("블로그서버 이메일 : " + kakaoProfile.getKakao_account().getEmail());
         // UUID란 -> 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
+        System.out.println(28);
         System.out.println("블로그서버 패스워드 : " + cosKey);
-
+        System.out.println(29);
         User kakaoUser = User.builder()
                 .username(kakaoProfile.getKakao_account().getEmail() + "_" + kakaoProfile.getId())
                 .password(cosKey)
@@ -144,6 +167,7 @@ public class UserController {
                 .oauth("kakao")
                 .build();
 
+        System.out.println(30);
         // 가입자 혹은 비가입자 체크 해서 처리
         User originUser = userService.회원찾기(kakaoUser.getUsername());
 

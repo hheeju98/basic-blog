@@ -9,7 +9,9 @@ let index = {
         $("#btn-update").on("click", ()=>{ //function(){}, ()=> this를 바인딩하기 위해서!
             this.update();
         });
-        $("btn-reply-save").on("click", ()=>{
+        
+        $("#btn-reply-save").on("click", ()=>{ 
+           
             this.replySave();
         });
     },
@@ -37,7 +39,7 @@ let index = {
   },
  
 
-  deleteById: function(){
+deleteById: function(){
 let id = $("#id").text();
  $.ajax({
  type: "DELETE",
@@ -51,7 +53,7 @@ let id = $("#id").text();
  }); 
   },
 
-  update: function(){
+update: function(){
 let id = $("#id").val();
 
  let data = {
