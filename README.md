@@ -46,12 +46,6 @@
 <br/><br/>
 
 
-<h4>글 수정 기능</h4>
-<p align="center">
-<img src="https://user-images.githubusercontent.com/97711699/173753880-83d7a49d-54a5-434f-a81e-31a116cd6d01.gif">
-</p>
-<br/><br/>
-
 
 <h4>글 삭제 기능</h4>
 <p align="center">
